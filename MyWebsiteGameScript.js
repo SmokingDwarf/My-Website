@@ -773,7 +773,7 @@ let scoreVergelijking = () => {
 };
 
 //Een object vergelijking, die het Avonturier object vergelijkt met het Monster object.
-let conflict = () => {
+const conflict = () => {
     //Alle dobbelstenen. Deze dobbelstenen bepalen hoe goed je bent. Na een vergelijking met je tegenstander word je type dobbelsteen (d4 t/m d20) hoger op basis van de sterktes en zwakheden van je tegenstander en jezelf.
     const AvonturierD4 = Math.ceil(Math.random()*4);
     const AvonturierD6 = Math.ceil(Math.random()*6);
@@ -869,23 +869,31 @@ let conflict = () => {
         document.getElementById("gevechtsLog").innerHTML += `De ${monsterType.Naam} verdedigt met een 10-zijdige dobbelsteen en rolt een <b>${verdedigingsDobbelsteen}</b>! ` ;
     } else if (monsterType.Gevechtscore === 4) {    
         verdedigingsDobbelsteen = MonsterDiceArray[4];
-        document.getElementById("gevechtsLog").innerHTML +=`De ${monsterType.Naam} verdedigt met een 12-zijdige dobbelsteen en rolt een <b>${verdedigingsDobbelsteen}</b>! ` ;
+        document.getElementById("gevechtsLog").innerHTML += `De ${monsterType.Naam} verdedigt met een 12-zijdige dobbelsteen en rolt een <b>${verdedigingsDobbelsteen}</b>! ` ;
     } else {                                                                                    
         verdedigingsDobbelsteen = MonsterDiceArray[5];
         document.getElementById("gevechtsLog").innerHTML += `De ${monsterType.Naam} verdedigt met een 20-zijdige dobbelsteen en rolt een <b>${verdedigingsDobbelsteen}</b>! ` ;                                                         
     };
         // Deze console.log post het resultaat van het conflict.
-    if (avonturier.Levenspunten >= 1 && monsterType.Levenspunten >= 1) {
-        if (aanvalDobbelsteen > verdedigingsDobbelsteen) {                                  // Als de waarde van de aanval dobbelsteen van de Avonturier groter is dan verdedigings dobbelsteen van het Monster:
-            --monsterType.Levenspunten;
-            document.getElementById("gevechtsLog").innerHTML += `<br>De Avonturier wint het conflict! De ${monsterType.Naam} heeft nog <b>${monsterType.Levenspunten}</b> levenspunten over. `;                                // Post het resultaat van het conflict; in dit geval heeft de Avonturier gewonnen!
-        } else if (aanvalDobbelsteen < verdedigingsDobbelsteen) {
-            --avonturier.Levenspunten;
-            document.getElementById("gevechtsLog").innerHTML += `<br>De ${monsterType.Naam} wint het conflict! Je hebt nog <b>${avonturier.Levenspunten}</b> levenspunten over. `;
-        } else if (aanvalDobbelsteen === verdedigingsDobbelsteen) {
-                document.getElementById("gevechtsLog").innerHTML += `<br>Het is een standoff. `;
-            };
-    } else if (avonturier.Levenspunten === 0 || monsterType.Levenspunten === 0) {
+    gevechtResultaat();
+    document.getElementById("gevechtsLog").innerHTML += `<br><br>`;    
+};
+
+const gevechtResultaat = () => {
+    if (aanvalDobbelsteen > verdedigingsDobbelsteen) {                                  // Als de waarde van de aanval dobbelsteen van de Avonturier groter is dan verdedigings dobbelsteen van het Monster:
+        --monsterType.Levenspunten;
+        if (monsterType.Levenspunten === 0) {
+            document.getElementById("gevechtsLog").innerHTML += `<br>De Avonturier wint het conflict! De ${monsterType.Naam} heeft geen levenspunten meer over!`;
+            document.getElementById("GameTekst").innerHTML = `Hoezee! Je hebt de ${monsterType.Naam} verslagen!`;
+            document.getElementById("overworldKnop").innerHTML = `Terug naar Stadstaat`
+            document.getElementById("conflictKnop").style.display = "none"; 
+            document.getElementById("wapenWisselenKnop").style.display = "none";
+            document.getElementById("pantserWisselenKnop").style.display = "none";
+        } else {
+            document.getElementById("gevechtsLog").innerHTML += `<br>De Avonturier wint het conflict! De ${monsterType.Naam} heeft nog <b>${monsterType.Levenspunten}</b> levenspunten over. `;
+        };                                // Post het resultaat van het conflict; in dit geval heeft de Avonturier gewonnen!
+    } else if (aanvalDobbelsteen < verdedigingsDobbelsteen) {
+        --avonturier.Levenspunten;
         if (avonturier.Levenspunten === 0) {
             document.getElementById("gevechtsLog").innerHTML += `<br>De ${monsterType.Naam} wint het conflict! Je hebt geen levenspunten meer over...`;
             document.getElementById("GameTekst").innerHTML = `Oh nee! Je bent verslagen! Opnieuw beginnen?`
@@ -894,14 +902,10 @@ let conflict = () => {
             document.getElementById("conflictKnop").style.display = "none"; 
             document.getElementById("wapenWisselenKnop").style.display = "none";
             document.getElementById("pantserWisselenKnop").style.display = "none";
-        } else if (monsterType.Levenspunten === 0) {
-            document.getElementById("gevechtsLog").innerHTML += `<br>De Avonturier wint het conflict! De ${monsterType.Naam} heeft geen levenspunten meer over!`;
-            document.getElementById("GameTekst").innerHTML = `Hoezee! Je hebt de ${monsterType.Naam} verslagen!`;
-            document.getElementById("overworldKnop").innerHTML = `Terug naar Stadstaat`
-            document.getElementById("conflictKnop").style.display = "none"; 
-            document.getElementById("wapenWisselenKnop").style.display = "none";
-            document.getElementById("pantserWisselenKnop").style.display = "none";
-        };
+        } else {
+            document.getElementById("gevechtsLog").innerHTML += `<br>De ${monsterType.Naam} wint het conflict! Je hebt nog <b>${avonturier.Levenspunten}</b> levenspunten over. `;
+        };            
+    } else if (aanvalDobbelsteen === verdedigingsDobbelsteen) {
+        document.getElementById("gevechtsLog").innerHTML += `<br>Het is een standoff. `;
     };
-    document.getElementById("gevechtsLog").innerHTML += `<br><br>`;    
 };
