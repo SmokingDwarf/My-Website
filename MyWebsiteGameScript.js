@@ -500,80 +500,122 @@ const overworldFunction = () => {
 
 //OVERWORLD TEGELS
 const stadSelectie = () => {
-    avonturier.Locatie = "Stad";
-    const overworldTegelArray = document.getElementsByClassName("overworldButton");
-    let i;
-    for (i = 0; i < overworldTegelArray.length; i++) {
-        overworldTegelArray[i].style.display = "none";
-    };
     monsterType = monsterArray[0];
-    scoreVergelijking();
+    if (monsterType.Levenspunten > 0) {
+        avonturier.Locatie = "Stad";
+        const overworldTegelArray = document.getElementsByClassName("overworldButton");
+        let i;
+        for (i = 0; i < overworldTegelArray.length; i++) {
+            overworldTegelArray[i].style.display = "none";
+        };
+        scoreVergelijking();
+    } else {
+        document.getElementById("GameTekst").innerHTML = 
+        `Je hebt de ${monsterType.Naam} al verslagen!` +
+        ` Kies een andere regio.`
+    };
 };
 
 const bossenSelectie = () => {
-    avonturier.Locatie = "Bossen";
+    monsterType = monsterArray[1];
+    if (monsterType.Levenspunten > 0) {
+    avonturier.Locatie = monsterType.Locatie;
     const overworldTegelArray = document.getElementsByClassName("overworldButton");
     let i;
     for (i = 0; i < overworldTegelArray.length; i++) {
         overworldTegelArray[i].style.display = "none";
     };
-    monsterType = monsterArray[1];
     scoreVergelijking();
+    } else {
+        document.getElementById("GameTekst").innerHTML = 
+        `Je hebt de ${monsterType.Naam} al verslagen!` +
+        ` Kies een andere regio.`
+    };
 };
 
 const heideSelectie = () => {
-    avonturier.Locatie = "Heide";
-    const overworldTegelArray = document.getElementsByClassName("overworldButton");
-    let i;
-    for (i = 0; i < overworldTegelArray.length; i++) {
-        overworldTegelArray[i].style.display = "none";
-    };
     monsterType = monsterArray[2];
-    scoreVergelijking();
+    if (monsterType.Levenspunten > 0) {
+        avonturier.Locatie = monsterType.Locatie;
+        const overworldTegelArray = document.getElementsByClassName("overworldButton");
+        let i;
+        for (i = 0; i < overworldTegelArray.length; i++) {
+            overworldTegelArray[i].style.display = "none";
+        };
+        scoreVergelijking();
+    } else {
+        document.getElementById("GameTekst").innerHTML = 
+        `Je hebt de ${monsterType.Naam} al verslagen!` +
+        ` Kies een andere regio.`
+    };
 };
 
 const akkersSelectie = () => {
-    avonturier.Locatie = "Akkers";
-    const overworldTegelArray = document.getElementsByClassName("overworldButton");
-    let i;
-    for (i = 0; i < overworldTegelArray.length; i++) {
-        overworldTegelArray[i].style.display = "none";
-    };
     monsterType = monsterArray[3];
-    scoreVergelijking();
+    if (monsterType.Levenspunten > 0) {
+        avonturier.Locatie = monsterType.Locatie;
+        const overworldTegelArray = document.getElementsByClassName("overworldButton");
+        let i;
+        for (i = 0; i < overworldTegelArray.length; i++) {
+            overworldTegelArray[i].style.display = "none";
+        };
+        scoreVergelijking();
+    } else {
+        document.getElementById("GameTekst").innerHTML = 
+        `Je hebt de ${monsterType.Naam} al verslagen!` +
+        ` Kies een andere regio.`
+    };
 };
 
 const heuvelsSelectie = () => {
-    avonturier.Locatie = "Heuvels";
-    const overworldTegelArray = document.getElementsByClassName("overworldButton");
-    let i;
-    for (i = 0; i < overworldTegelArray.length; i++) {
-        overworldTegelArray[i].style.display = "none";
-    };
     monsterType = monsterArray[4];
-    scoreVergelijking();
+if (monsterType.Levenspunten > 0) {
+        avonturier.Locatie = monsterType.Locatie;
+        const overworldTegelArray = document.getElementsByClassName("overworldButton");
+        let i;
+        for (i = 0; i < overworldTegelArray.length; i++) {
+            overworldTegelArray[i].style.display = "none";
+        };
+        scoreVergelijking();
+    } else {
+        document.getElementById("GameTekst").innerHTML = 
+        `Je hebt de ${monsterType.Naam} al verslagen!` +
+        ` Kies een andere regio.`
+    };
 };
 
 const bergSelectie = () => {
-    avonturier.Locatie = "Berg";
-    const overworldTegelArray = document.getElementsByClassName("overworldButton");
-    let i;
-    for (i = 0; i < overworldTegelArray.length; i++) {
-        overworldTegelArray[i].style.display = "none";
-    };
     monsterType = monsterArray[5];
-    scoreVergelijking();
+    if (monsterType.Levenspunten > 0) {
+        avonturier.Locatie = monsterType.Locatie;
+        const overworldTegelArray = document.getElementsByClassName("overworldButton");
+        let i;
+        for (i = 0; i < overworldTegelArray.length; i++) {
+            overworldTegelArray[i].style.display = "none";
+        };
+        scoreVergelijking();
+    } else {
+        document.getElementById("GameTekst").innerHTML = 
+        `Je hebt de ${monsterType.Naam} al verslagen!` +
+        ` Kies een andere regio.`
+    };
 };
 
 const rivierSelectie = () => {
-    avonturier.Locatie = "Rivier";
-    const overworldTegelArray = document.getElementsByClassName("overworldButton");
-    let i;
-    for (i = 0; i < overworldTegelArray.length; i++) {
-        overworldTegelArray[i].style.display = "none";
-    };
     monsterType = monsterArray[6];
-    scoreVergelijking();
+    if (monsterType.Levenspunten > 0) {
+        avonturier.Locatie = monsterType.Locatie;
+        const overworldTegelArray = document.getElementsByClassName("overworldButton");
+        let i;
+        for (i = 0; i < overworldTegelArray.length; i++) {
+            overworldTegelArray[i].style.display = "none";
+        };
+        scoreVergelijking();
+    } else {
+        document.getElementById("GameTekst").innerHTML = 
+        `Je hebt de ${monsterType.Naam} al verslagen!` +
+        ` Kies een andere regio.`
+    };
 };
 
 //WAPENWISSELEN
